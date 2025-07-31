@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Tip System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+        {
+            "imports": {
+                "marked": "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js",
+                "dompurify": "https://cdn.jsdelivr.net/npm/dompurify/dist/purify.es.min.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">Creative Space</h1>
+                <p class="subtitle">Support creators with tips on their work</p>
+            </div>
+            <div class="user-info" id="userInfo">
+                <div class="avatar" id="userAvatar"></div>
+                <span class="username" id="username">Loading...</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="project-info">
+                <h2 id="projectTitle">Loading project...</h2>
+                <div class="project-stats">
+                    <span class="stat">
+                        <span class="stat-value" id="commentCount">0</span>
+                        <span class="stat-label">Comments</span>
+                    </span>
+                    <span class="stat">
+                        <span class="stat-value" id="tipCount">0</span>
+                        <span class="stat-label">Tips</span>
+                    </span>
+                    <span class="stat">
+                        <span class="stat-value" id="totalCredits">0</span>
+                        <span class="stat-label">Credits Earned</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="comment-form-container">
+                <div class="comment-form">
+                    <div class="form-header">
+                        <h3>Leave a Comment</h3>
+                        <p class="form-subtitle">Add a tip to support the creator</p>
+                    </div>
+                    
+                    <div class="tip-selector">
+                        <label class="tip-label">Add a tip (optional)</label>
+                        <div class="tip-buttons">
+                            <button class="tip-btn" data-amount="0">No Tip</button>
+                            <button class="tip-btn" data-amount="10">10 Credits</button>
+                            <button class="tip-btn" data-amount="50">50 Credits</button>
+                            <button class="tip-btn" data-amount="100">100 Credits</button>
+                            <button class="tip-btn" data-amount="custom">Custom</button>
+                        </div>
+                        <div class="custom-tip hidden" id="customTip">
+                            <input type="number" id="customAmount" placeholder="Enter amount" min="1" max="10000">
+                        </div>
+                    </div>
+
+                    <textarea 
+                        id="commentInput" 
+                        placeholder="Share your thoughts..." 
+                        maxlength="1000"
+                        class="comment-input"
+                    ></textarea>
+                    
+                    <div class="form-actions">
+                        <span class="char-counter">
+                            <span id="charCount">0</span>/1000
+                        </span>
+                        <button class="post-btn" id="postBtn">
+                            <span class="btn-text">Post Comment</span>
+                            <span class="btn-tip" id="btnTip">+ 0 Credits</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comments-section">
+                <div class="comments-header">
+                    <h3>Comments</h3>
+                    <div class="view-toggle">
+                        <button class="toggle-btn active" data-view="all">All</button>
+                        <button class="toggle-btn" data-view="tips">Tips Only</button>
+                    </div>
+                </div>
+                
+                <div class="comments-container" id="commentsContainer">
+                    <div class="loading">Loading comments...</div>
+                </div>
+                
+                <button class="load-more" id="loadMoreBtn" style="display: none;">
+                    Load More
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal hidden" id="authModal">
+        <div class="modal-content">
+            <h3>Welcome to Creative Space</h3>
+            <p>To post comments and tips, please interact with the page first.</p>
+            <button class="modal-btn" onclick="closeAuthModal()">Got it!</button>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
